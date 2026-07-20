@@ -39,7 +39,25 @@
         <!-- SUBTAB LAYER: OVERVIEW -->
         <div class="tab-subview-stack" *ngIf="activeTab === 'overview'">
           <div style="width:300px;height:300px;">
-            <ui-flip-card trigger="hover">
+            <ui-flip-card trigger="hover"direction="vertical">
+              <div front class="card-face-content">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzHuWu5HX6adHCwUQ560Oc4t8go9IJQtG3k_e4VLUbg&s=10" alt="Angular" />
+                <h3>Angular</h3>
+                <p>Modern Frontend Framework</p>
+              </div>
+
+              <div back class="card-face-content">
+                <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" />
+                <h3>veera-ng-ui-kit</h3>
+                <p>
+                  A reusable Angular component library with modern UI components and
+                  design tokens.
+                </p>
+              </div>
+            </ui-flip-card>
+          </div>
+            <div style="width:300px;height:300px;">
+            <ui-flip-card  [(flipped)]="cardFlipped" trigger="click" direction="horizontal">
               <div front class="card-face-content">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzHuWu5HX6adHCwUQ560Oc4t8go9IJQtG3k_e4VLUbg&s=10" alt="Angular" />
                 <h3>Angular</h3>

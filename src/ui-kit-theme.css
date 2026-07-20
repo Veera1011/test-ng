@@ -3,11 +3,11 @@
 :root {
   --color-white: #FFFFFF;
   --color-black: #14171C;
-  --color-primary-50: #ffebdc;
-  --color-primary-100: #ffd3b3;
-  --color-primary-300: #ffa666;
-  --color-primary-500: #FF7A1A;
-  --color-primary-600: #e66000;
-  --color-primary-700: #b34b00;
-  --shadow-focus: 0 0 0 3px #ffd3b3;
+  --color-primary-50: #fbc9c8;
+  --color-primary-100: #f7a4a3;
+  --color-primary-300: #f25e5c;
+  --color-primary-500: #ec1815;
+  --color-primary-600: #bf120f;
+  --color-primary-700: #8f0d0c;
+  --shadow-focus: 0 0 0 3px #f7a4a3;
 }

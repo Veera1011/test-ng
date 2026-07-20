@@ -26,7 +26,7 @@
             ],
             "styles": [
               "veera-ng-ui-kit/tokens.css",
-             
+              "src/ui-kit-theme.css",
               "src/styles.css"
             ]
           },

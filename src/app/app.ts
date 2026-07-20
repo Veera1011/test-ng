@@ -81,6 +81,7 @@ import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialo
 })
 export class App {
   protected readonly title = signal('enterprise-workspace');
+  cardFlipped = false;
   meetingTime = '14:30';
   // Viewport structural status states
   activeNavId = 'dashboard';
