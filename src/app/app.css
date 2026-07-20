@@ -1,29 +1,49 @@
-:host, .shell { 
-  display: block; 
-  height: 100%; 
+:host {
+  display: block;
+  height: 100%;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  width: 100%;
 }
 
 .shell {
   display: flex;
-  min-height: 100vh;
-  align-items: stretch; /* Forces all flex children to stretch to full height */
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
   background-color: var(--color-gray-50);
   font-family: var(--font-family-body);
   color: var(--color-black);
+  margin-top: 64px;   /* pushes content below the now-fixed topbar */
 }
 
 .shell-nav {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  /* Remove width here so the internal component dictates the width */
-  height: auto;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
 }
 
 .shell-main {
   flex: 1;
   min-width: 0;
   background-color: #f9fafb;
+  overflow-y: auto;
 }
 
 .page-header {
@@ -70,8 +90,8 @@
   cursor: pointer;
   transition: all 0.12s ease-in-out;
 }
-.tooltip-trigger:hover { 
-  border-color: var(--color-gray-400); 
+.tooltip-trigger:hover {
+  border-color: var(--color-gray-400);
   background-color: var(--color-gray-50);
 }
 
@@ -153,7 +173,7 @@
 .field-row {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1.5);
+  gap: var(--space-1-5, 6px);
   width: 100%;
 }
 

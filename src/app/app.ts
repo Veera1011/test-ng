@@ -34,7 +34,9 @@ import {
   PaginatorComponent,
   ExpansionPanelComponent,
   TimePickerComponent,
-  FlipCardComponent
+  FlipCardComponent,
+  TopbarComponent,
+  TopbarNavItem
 } from 'veera-ng-ui-kit';
 import { NgIf, NgFor } from '@angular/common';
 import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialog-component';
@@ -74,6 +76,7 @@ import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialo
     ExpansionPanelComponent,
     TimePickerComponent,
     FlipCardComponent,
+    TopbarComponent
     
   ],
   templateUrl: './app.html',
@@ -267,4 +270,11 @@ export class App {
       }
     });
   }
+
+  topbarNav: TopbarNavItem[] = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'activity', label: 'Activity' },
+  { id: 'settings', label: 'Settings' },
+];
+searchQuery = '';
 }
