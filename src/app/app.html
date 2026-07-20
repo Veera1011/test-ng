@@ -1,0 +1,311 @@
+<div class="shell">
+
+  <!-- SIDENAV SYSTEM -->
+  <ui-sidenav [groups]="sidenavGroups" [activeId]="activeNavId" (activeIdChange)="onNavChange($event)"
+    class="shell-nav">
+  </ui-sidenav>
+
+  <!-- MAIN VIEWPORT CONTAINER -->
+  <div class="shell-main">
+
+    <!-- ADMINISTRATIVE GLOBAL PAGE HEADER -->
+    <header class="page-header">
+      <div>
+        <span class="eyebrow">Project Workspace</span>
+        <h1>
+          {{ activeNavId === 'dashboard' ? 'Q3 Roadmap Overview' : activeNavId === 'projects' ? 'Active Projects
+          Registry' : 'Team Structure Roster' }}
+          <ui-badge variant="success">On track</ui-badge>
+        </h1>
+      </div>
+      <div class="page-header-actions">
+        <button class="tooltip-trigger" [uiTooltip]="'Runs the global export suite engine'">Export ⤓</button>
+        <ui-button variant="secondary" (click)="openDrawer()">Open filters</ui-button>
+        <ui-button variant="ghost" (click)="triggerToast()">Save changes</ui-button>
+      </div>
+    </header>
+
+    <!-- HORIZONTAL PAGE SUB-TABS (Visible only on Dashboard context) -->
+    <ui-tabs *ngIf="activeNavId === 'dashboard'" [tabs]="tabs" [activeId]="activeTab"
+      (activeIdChange)="onTabChange($event)" variant="underline" class="page-tabs">
+    </ui-tabs>
+
+    <!-- CONTENT DISPLAY SWITCHBOARD -->
+    <div class="content">
+
+      <!-- ================= PRIMARY VIEWSPACE: DASHBOARD ================= -->
+      <ng-container *ngIf="activeNavId === 'dashboard'">
+
+        <!-- SUBTAB LAYER: OVERVIEW -->
+        <div class="tab-subview-stack" *ngIf="activeTab === 'overview'">
+          <div style="width:300px;height:300px;">
+            <ui-flip-card trigger="hover">
+              <div front class="card-face-content">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzHuWu5HX6adHCwUQ560Oc4t8go9IJQtG3k_e4VLUbg&s=10" alt="Angular" />
+                <h3>Angular</h3>
+                <p>Modern Frontend Framework</p>
+              </div>
+
+              <div back class="card-face-content">
+                <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" />
+                <h3>veera-ng-ui-kit</h3>
+                <p>
+                  A reusable Angular component library with modern UI components and
+                  design tokens.
+                </p>
+              </div>
+            </ui-flip-card>
+          </div>
+          <div class="alert-stack">
+            <ui-alert type="success" title="Deployment succeeded">All production microservices passed live traffic
+              integrity configurations.</ui-alert>
+            <ui-alert type="warning" title="Approaching plan limit">You have exhausted 92% of your high-speed container
+              computation cache.</ui-alert>
+          </div>
+
+          <div class="card-grid">
+            <ui-card title="Storage used" subtitle="System Allocation" variant="elevated">
+              <div class="card-metric-wrapper">
+                <ui-progress [value]="94" variant="danger"></ui-progress>
+                <span class="metric-caption">94% of 500GB metrics consumed</span>
+              </div>
+            </ui-card>
+            <ui-card title="Migration progress" subtitle="Database Layer" variant="elevated">
+              <div class="card-metric-wrapper">
+                <ui-progress [value]="100" variant="success"></ui-progress>
+                <span class="metric-caption">Migration Pipeline Complete</span>
+              </div>
+            </ui-card>
+            <ui-card title="Upload in progress" subtitle="Media CDN Asset sync" variant="elevated">
+              <div class="card-metric-wrapper">
+                <ui-progress [value]="progressValue"></ui-progress>
+                <span class="metric-caption">{{ progressValue }}% synced into active cache buffers</span>
+              </div>
+            </ui-card>
+          </div>
+        </div>
+
+        <!-- SUBTAB LAYER: ACTIVITY -->
+        <div class="tab-subview-stack" *ngIf="activeTab === 'activity'">
+          <ui-card title="Ecosystem Logs & Audits" subtitle="Real-time asynchronous monitoring actions"
+            variant="bordered">
+            <div class="log-manifest">
+              <div class="log-entry"><strong>[2026-07-19 16:35]</strong> Synchronized core workspace components cleanly
+                with primary edge points.</div>
+              <div class="log-entry"><strong>[2026-07-19 14:10]</strong> User triggers full workspace parameters
+                adjustments configuration.</div>
+              <div class="log-entry"><strong>[2026-07-19 09:44]</strong> Nightly schema integrity automation
+                verification checks passed completely.</div>
+            </div>
+          </ui-card>
+          <div class="expansion-accordion-stack">
+
+            <ui-expansion-panel title="Advanced Infrastructure Configuration"
+              subtitle="Manage database parameters and custom edge endpoints proxies">
+
+              <div class="form-grid">
+                <div class="field-row">
+                  <span class="field-label">Primary Connection Pool Timeout</span>
+                  <input type="text" class="tooltip-trigger" style="width: 100%; max-width: 320px;" value="15000ms"
+                    readonly />
+                </div>
+                <p style="margin: 8px 0 0 0; color: var(--color-gray-500); font-size: 12px;">
+                  Database layer queries automatically recycle after hitting designated operational boundaries.
+                </p>
+              </div>
+
+            </ui-expansion-panel>
+
+            <ui-expansion-panel title="Asynchronous Webhook Subscriptions"
+              subtitle="Configure active event listeners mapping strategies">
+
+              <p style="margin: 0;">
+                No webhooks have been provisioned for this specific roadmap frame. Click your configuration actions
+                panel inside the floating layout filters drawer to emit context records securely.
+              </p>
+              <ui-card title="Operational Shift Scheduling" subtitle="Specify roadmap window target points"
+                variant="bordered">
+                <div class="form-grid">
+
+                  <div class="field-row">
+                    <span class="field-label">Daily Sync Standup Time Target</span>
+                    <!-- Direct two-way binding pattern mapped onto standard value strings -->
+
+                  </div>
+
+                  <div class="field-summary">
+                    <span>Current active 24h standard timestamp: <strong>{{ meetingTime }}</strong></span>
+                  </div>
+
+                </div>
+              </ui-card>
+
+            </ui-expansion-panel>
+
+          </div>
+        </div>
+
+        <!-- SUBTAB LAYER: SETTINGS FORM -->
+        <div class="tab-subview-stack" *ngIf="activeTab === 'settings'">
+          <div class="settings-split-grid">
+            <ui-card title="Account Details Configuration" subtitle="Workspace point-of-contact values"
+              variant="bordered">
+              <div class="form-grid">
+                <div class="field-row">
+                  <span class="field-label">Primary Notification Email</span>
+                  <ui-input name="email" type="email" placeholder="you@example.com" [(value)]="email"></ui-input>
+                </div>
+                <div class="field-row">
+                  <span class="field-label">Reference Target Milestone Date</span>
+                  <ui-date-picker [(value)]="bookingDate" min="2026-01-01" max="2026-12-31"></ui-date-picker>
+                </div>
+                <div class="field-row">
+                  <span class="field-label">Reporting Sprint Operations Range</span>
+                  <ui-date-range-picker [(range)]="bookingRange" min="2026-01-01" max="2026-12-31"
+                    (rangeChange)="onRangeChange($event)"></ui-date-range-picker>
+                </div>
+                <div class="field-summary">
+                  <span>Selected Birth Date Value: <strong>{{ bookingDate }}</strong></span>
+                  <span>Assigned Operational Range: <strong>{{ bookingRange.start }} → {{ bookingRange.end
+                      }}</strong></span>
+                </div>
+              </div>
+            </ui-card>
+
+            <ui-card title="Preferences & Plan Subscriptions" subtitle="Fine-tune transactional parameters"
+              variant="bordered">
+              <div class="form-grid">
+                <ui-checkbox [checked]="isChecked" (checkedChange)="isChecked = $event">
+                  Accept internal SLA Terms &amp; Conditions
+                </ui-checkbox>
+                <ui-toggle [checked]="isEnabled" (checkedChange)="onToggleChange($event)">
+                  Enable asynchronous daily email digests
+                </ui-toggle>
+                <div class="radio-row">
+                  <span class="field-label">Billing Cycle Strategy:</span>
+                  <ui-radio name="billing" value="monthly" [checked]="billingCycle === 'monthly'"
+                    (checkedChange)="onBillingChange($event)">Monthly Strategy</ui-radio>
+                  <ui-radio name="billing" value="annual" [checked]="billingCycle === 'annual'"
+                    (checkedChange)="onBillingChange($event)">Annual Allocation</ui-radio>
+                </div>
+                <div class="select-row">
+                  <span class="field-label">Assigned Tier:</span>
+                  <ui-select [options]="planOptions" [value]="selectedPlan"
+                    (valueChange)="selectedPlan = $event"></ui-select>
+                </div>
+              </div>
+            </ui-card>
+          </div>
+
+          <!-- Danger zone component framework context -->
+          <ui-card variant="bordered" class="card-danger">
+            <div class="danger-message-block">
+              <h2>Decommission Target Repository</h2>
+              <p>This action is non-reversible. This immediately purges all operational data pipelines permanently.</p>
+            </div>
+            <div class="danger-actions">
+              <ui-dropdown #dd>
+                <button trigger class="row-menu-trigger" (click)="dd.toggle($event)">⋯</button>
+                <div menu>
+                  <ui-dropdown-item (click)="dd.close()">Archive Repository</ui-dropdown-item>
+                  <ui-dropdown-item (click)="dd.close()">Transfer Administrative Token</ui-dropdown-item>
+                  <ui-dropdown-item [danger]="true" (click)="deleteProject(); dd.close()">Force Purge
+                    Project</ui-dropdown-item>
+                </div>
+              </ui-dropdown>
+              <ui-button variant="danger" (click)="deleteProject()">Delete project</ui-button>
+            </div>
+          </ui-card>
+        </div>
+
+      </ng-container>
+
+      <!-- ================= PRIMARY VIEWSPACE: PROJECTS (DATA INTERFACES) ================= -->
+      <ng-container *ngIf="activeNavId === 'projects'">
+        <ui-card title="Personnel & Access Control Directory"
+          subtitle="Review active permissions assignments inside this workspace ecosystem" variant="bordered">
+          <ui-data-table [columns]="columns" [data]="pagedUsers" [selectable]="true" [striped]="true" rowKey="id"
+            (selectionChange)="onSelectionChange($event)" (sortChange)="onSort($event)">
+          </ui-data-table>
+
+          <div class="paginator-container">
+            <ui-paginator [length]="users.length" [pageIndex]="pageIndex" [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 20]" (pageChange)="onPageChange($event)">
+            </ui-paginator>
+          </div>
+        </ui-card>
+      </ng-container>
+
+      <!-- ================= PRIMARY VIEWSPACE: TEAM ROSTER ================= -->
+      <ng-container *ngIf="activeNavId === 'team'">
+        <ui-card title="Workspace Personnel Overview"
+          subtitle="Core design, development, and system engineering contacts" variant="bordered">
+          <div class="team-list">
+            <div class="team-row" *ngFor="let member of team">
+              <ui-avatar [name]="member.name" [status]="member.status" size="md"></ui-avatar>
+              <div class="team-info">
+                <div class="team-name">{{ member.name }}</div>
+                <div class="team-role">{{ member.role }}</div>
+              </div>
+              <ui-badge
+                [variant]="member.status === 'online' ? 'success' : member.status === 'away' ? 'warning' : 'neutral'">
+                {{ member.status }}
+              </ui-badge>
+            </div>
+          </div>
+        </ui-card>
+      </ng-container>
+
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE-OUT PANEL DRAWER FILTER LAYERS(openChange)="onDrawerChange($event)" -->
+<ui-drawer [open]="drawerOpen" title="Contextual View Controls" position="right" size="full" [hasActions]="true">
+  <div class="drawer-inner-content">
+    <p class="drawer-hint-text">Configure operational filter properties below to focus downstream project dashboard
+      milestones.</p>
+
+    <div class="drawer-section">
+      <h3>Milestone Status Scope</h3>
+      <ui-time-picker [(value)]="meetingTime" placeholder="Pick target runtime"></ui-time-picker>
+      <div class="chip-row">
+        <ui-chip [selected]="true" [selectable]="true">All Scopes</ui-chip>
+        <ui-chip [selected]="isSelected" [selectable]="true" (selectedChange)="onChipSelection($event)"
+          (remove)="onChipRemove()">
+          In progress
+        </ui-chip>
+        <ui-chip [selectable]="true">Blocked Pipeline Steps</ui-chip>
+        <ui-chip [selectable]="true">Completed Operations</ui-chip>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <h3>Context Maintenance Utility</h3>
+      <ui-menu [items]="menuItems" (itemClick)="onMenuClick($event)">
+        <ui-button class="btn">Execution Utility Menu ▾</ui-button>
+      </ui-menu>
+    </div>
+  </div>
+
+  <ui-card title="Personnel & Access Control Directory"
+    subtitle="Review active permissions assignments inside this workspace ecosystem" variant="bordered">
+    <ui-data-table [columns]="columns" [data]="pagedUsers" align="left" [selectable]="true" [striped]="true" rowKey="id"
+      (selectionChange)="onSelectionChange($event)" (sortChange)="onSort($event)">
+    </ui-data-table>
+
+    <div class="paginator-container">
+      <ui-paginator [length]="users.length" [pageIndex]="pageIndex" [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20]" (pageChange)="onPageChange($event)">
+      </ui-paginator>
+    </div>
+  </ui-card>
+
+  <div actions>
+    <ui-button variant="secondary" (click)="drawerOpen = false">Cancel</ui-button>
+    <ui-button variant="primary" (click)="applyFilters()">Apply View Filters</ui-button>
+  </div>
+</ui-drawer>
+
+<!-- NOTIFICATION STACK CONTEXT -->
+<ui-toast-container></ui-toast-container>

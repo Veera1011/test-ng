@@ -1,0 +1,14 @@
+<div class="status-box">
+  <p *ngIf="isMobile">📱 Mobile view active</p>
+  <p *ngIf="isTablet">💻 Tablet view active</p>
+  <p *ngIf="isDesktop">🖥️ Desktop view active</p>
+</div>
+
+<!-- Example: conditionally show different layouts -->
+<div *ngIf="isMobile" class="mobile-layout">
+  Mobile-specific content/component here
+</div>
+
+<div *ngIf="!isMobile" class="desktop-layout">
+  Desktop/tablet content/component here
+</div>
