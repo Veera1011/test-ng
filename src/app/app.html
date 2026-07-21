@@ -1,18 +1,13 @@
 <div class="app-shell">
 
   <!-- TOPBAR: spans full width, sits above everything -->
-  <ui-topbar
-    class="app-topbar"
-    [navItems]="topbarNav"
-    [activeId]="activeTab"
-    (activeIdChange)="activeTab = $event"
-    [hasSearch]="true"
-  >
+  <ui-topbar class="app-topbar" [navItems]="topbarNav" [activeId]="activeTab" (activeIdChange)="activeTab = $event"
+    [hasSearch]="true">
     <div brand>
-      <span style="display:flex;align-items:center;gap:8px;">
+      <!-- <span style="display:flex;align-items:center;gap:8px;">
         <span style="width:24px;height:24px;background:var(--color-primary-500);border-radius:6px;"></span>
         Acme
-      </span>
+      </span> -->
     </div>
 
     <div search>
@@ -65,46 +60,63 @@
 
           <!-- SUBTAB LAYER: OVERVIEW -->
           <div class="tab-subview-stack" *ngIf="activeTab === 'overview'">
-            <div style="width:300px;height:300px;">
-              <ui-flip-card trigger="hover" direction="vertical">
-                <div front class="card-face-content">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzHuWu5HX6adHCwUQ560Oc4t8go9IJQtG3k_e4VLUbg&s=10" alt="Angular" />
-                  <h3>Angular</h3>
-                  <p>Modern Frontend Framework</p>
-                </div>
+            <ui-card> <ui-carousel [items]="products" [itemsPerView]="3" [loop]="true" [autoplay]="true"
+                [autoplayInterval]="5000">
+                <ng-template let-product>
+                  <ui-card [title]="product.name" variant="bordered">
+                    <img [src]="product.image" style="width:100%; border-radius:8px;" />
+                    <p>{{ product.price | currency }}</p>
+                  </ui-card>
+                </ng-template>
+              </ui-carousel></ui-card>
+            <div class="flip">
+              <div style="width:300px;height:300px;">
+                <ui-flip-card trigger="hover" direction="vertical">
+                  <div front class="card-face-content">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzHuWu5HX6adHCwUQ560Oc4t8go9IJQtG3k_e4VLUbg&s=10"
+                      alt="Angular" />
+                    <h3>Angular</h3>
+                    <p>Modern Frontend Framework</p>
+                  </div>
 
-                <div back class="card-face-content">
-                  <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" />
-                  <h3>veera-ng-ui-kit</h3>
-                  <p>
-                    A reusable Angular component library with modern UI components and
-                    design tokens.
-                  </p>
-                </div>
-              </ui-flip-card>
-            </div>
-            <div style="width:300px;height:300px;">
-              <ui-flip-card [(flipped)]="cardFlipped" trigger="click" direction="horizontal">
-                <div front class="card-face-content">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzHuWu5HX6adHCwUQ560Oc4t8go9IJQtG3k_e4VLUbg&s=10" alt="Angular" />
-                  <h3>Angular</h3>
-                  <p>Modern Frontend Framework</p>
-                </div>
+                  <div back class="card-face-content">
+                    <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" />
+                    <h3>veera-ng-ui-kit</h3>
+                    <p>
+                      A reusable Angular component library with modern UI components and
+                      design tokens.
+                    </p>
+                  </div>
+                </ui-flip-card>
+              </div>
+              <div style="width:300px;height:300px;">
+                <ui-flip-card [(flipped)]="cardFlipped" trigger="click" direction="horizontal">
+                  <div front class="card-face-content">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzHuWu5HX6adHCwUQ560Oc4t8go9IJQtG3k_e4VLUbg&s=10"
+                      alt="Angular" />
+                    <h3>Angular</h3>
+                    <p>Modern Frontend Framework</p>
+                  </div>
 
-                <div back class="card-face-content">
-                  <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" />
-                  <h3>veera-ng-ui-kit</h3>
-                  <p>
-                    A reusable Angular component library with modern UI components and
-                    design tokens.
-                  </p>
-                </div>
-              </ui-flip-card>
+                  <div back class="card-face-content back">
+                    <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" />
+                    <h3>veera-ng-ui-kit</h3>
+                    <p>
+                      A reusable Angular component library with modern UI components and
+                      design tokens.
+                    </p>
+                  </div>
+                </ui-flip-card>
+              </div>
             </div>
+
             <div class="alert-stack">
               <ui-alert type="success" title="Deployment succeeded">All production microservices passed live traffic
                 integrity configurations.</ui-alert>
-              <ui-alert type="warning" title="Approaching plan limit">You have exhausted 92% of your high-speed container
+              <ui-alert type="warning" title="Approaching plan limit">You have exhausted 92% of your high-speed
+                container
                 computation cache.</ui-alert>
             </div>
 
@@ -135,7 +147,8 @@
             <ui-card title="Ecosystem Logs & Audits" subtitle="Real-time asynchronous monitoring actions"
               variant="bordered">
               <div class="log-manifest">
-                <div class="log-entry"><strong>[2026-07-19 16:35]</strong> Synchronized core workspace components cleanly
+                <div class="log-entry"><strong>[2026-07-19 16:35]</strong> Synchronized core workspace components
+                  cleanly
                   with primary edge points.</div>
                 <div class="log-entry"><strong>[2026-07-19 14:10]</strong> User triggers full workspace parameters
                   adjustments configuration.</div>
@@ -144,10 +157,11 @@
               </div>
             </ui-card>
             <div class="expansion-accordion-stack">
-
-              <ui-expansion-panel title="Advanced Infrastructure Configuration"
+              <ui-expansion-panel title="Timeline"
                 subtitle="Manage database parameters and custom edge endpoints proxies">
-
+                <ui-card>
+                  <ui-timeline [items]="roadmapMilestones" layout="left"></ui-timeline>
+                </ui-card>
                 <div class="form-grid">
                   <div class="field-row">
                     <span class="field-label">Primary Connection Pool Timeout</span>
@@ -246,7 +260,8 @@
             <ui-card variant="bordered" class="card-danger">
               <div class="danger-message-block">
                 <h2>Decommission Target Repository</h2>
-                <p>This action is non-reversible. This immediately purges all operational data pipelines permanently.</p>
+                <p>This action is non-reversible. This immediately purges all operational data pipelines permanently.
+                </p>
               </div>
               <div class="danger-actions">
                 <ui-dropdown #dd>
@@ -306,8 +321,8 @@
   </div>
 </div>
 
-<!-- SLIDE-OUT PANEL DRAWER FILTER LAYERS -->
-<ui-drawer [open]="drawerOpen" (openChange)="onDrawerChange($event)" title="Contextual View Controls" position="right" size="full" [hasActions]="true">
+<!-- SLIDE-OUT PANEL DRAWER FILTER LAYERS (openChange)="onDrawerChange($event)" -->
+<ui-drawer [open]="drawerOpen" title="Contextual View Controls" position="right" size="full" [hasActions]="true">
   <div class="drawer-inner-content">
     <p class="drawer-hint-text">Configure operational filter properties below to focus downstream project dashboard
       milestones.</p>

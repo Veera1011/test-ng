@@ -36,9 +36,12 @@ import {
   TimePickerComponent,
   FlipCardComponent,
   TopbarComponent,
-  TopbarNavItem
+  TopbarNavItem,
+  TimelineComponent,
+  TimelineItem,
+  CarouselComponent
 } from 'veera-ng-ui-kit';
-import { NgIf, NgFor } from '@angular/common';
+import { NgIf, NgFor, NgTemplateOutlet, CurrencyPipe } from '@angular/common';
 import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialog-component';
 
 @Component({
@@ -76,7 +79,11 @@ import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialo
     ExpansionPanelComponent,
     TimePickerComponent,
     FlipCardComponent,
-    TopbarComponent
+    TopbarComponent,
+    TimelineComponent,
+    NgTemplateOutlet,
+    CarouselComponent,
+    CurrencyPipe
     
   ],
   templateUrl: './app.html',
@@ -277,4 +284,56 @@ export class App {
   { id: 'settings', label: 'Settings' },
 ];
 searchQuery = '';
+roadmapMilestones: TimelineItem[] = [
+   {
+    title: 'Deployment succeeded',
+    description: 'All production microservices passed live traffic integrity checks.',
+    timestamp: 'Jul 20, 16:35',
+    status: 'active',
+  },
+  {
+    title: 'Deployment succeeded',
+    description: 'All production microservices passed live traffic integrity checks.',
+    timestamp: 'Jul 19, 16:35',
+    status: 'success',
+  },
+  {
+    title: 'Configuration updated',
+    description: 'User triggered full workspace parameter adjustments.',
+    timestamp: 'Jul 19, 14:10',
+    status: 'danger',
+  },
+  {
+    title: 'Approaching plan limit',
+    description: "You've used 92% of this month's compute quota.",
+    timestamp: 'Jul 19, 11:02',
+    status: 'warning',
+  },
+  {
+    title: 'Nightly integrity check',
+    description: 'Schema verification passed with no anomalies.',
+    timestamp: 'Jul 19, 09:44',
+    status: 'default',
+  },
+];
+
+products = [
+  { name: 'Wireless Headphones', price: 79, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'Mechanical Keyboard', price: 129, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'USB-C Hub', price: 39, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'Webcam 4K', price: 89, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+   { name: 'Wireless Headphones', price: 79, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'Mechanical Keyboard', price: 129, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'USB-C Hub', price: 39, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'Webcam 4K', price: 89, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+    { name: 'Wireless Headphones', price: 79, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'Mechanical Keyboard', price: 129, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'USB-C Hub', price: 39, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'Webcam 4K', price: 89, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+    { name: 'Wireless Headphones', price: 79, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'Mechanical Keyboard', price: 129, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'USB-C Hub', price: 39, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+  { name: 'Webcam 4K', price: 89, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
+];
+
 }

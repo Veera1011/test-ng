@@ -319,8 +319,8 @@
   align-items: center;
   gap: 16px;
 
-  border-radius: 20px;
-  background: linear-gradient(135deg, #ffffff, #f5f7fa);
+  /* border-radius: 20px; */
+  /* background: linear-gradient(135deg, #ffffff, #f5f7fa); */
   text-align: center;
 
   box-shadow:
@@ -331,7 +331,7 @@
 }
 
 .card-face-content:hover {
-  transform: translateY(-4px);
+  /* transform: scale(-1) */
 }
 
 .card-face-content img {
@@ -358,4 +358,17 @@
   color: #666;
   line-height: 1.6;
   max-width: 250px;
+}
+.back{
+  background-color: rgb(81, 232, 94);
+}
+
+.flip{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+.expansion-accordion-stack{
+  gap: 10px;
 }
