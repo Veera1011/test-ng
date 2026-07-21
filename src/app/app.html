@@ -60,15 +60,15 @@
 
           <!-- SUBTAB LAYER: OVERVIEW -->
           <div class="tab-subview-stack" *ngIf="activeTab === 'overview'">
-            <ui-card> <ui-carousel [items]="products" [itemsPerView]="3" [loop]="true" [autoplay]="true"
-                [autoplayInterval]="5000">
+            <ui-carousel [items]="products" [itemsPerView]="3" [loop]="true" [autoplay]="true"
+                [autoplayInterval]="2000">
                 <ng-template let-product>
                   <ui-card [title]="product.name" variant="bordered">
                     <img [src]="product.image" style="width:100%; border-radius:8px;" />
                     <p>{{ product.price | currency }}</p>
                   </ui-card>
                 </ng-template>
-              </ui-carousel></ui-card>
+              </ui-carousel>
             <div class="flip">
               <div style="width:300px;height:300px;">
                 <ui-flip-card trigger="hover" direction="vertical">
