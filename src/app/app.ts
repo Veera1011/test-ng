@@ -39,7 +39,8 @@ import {
   TopbarNavItem,
   TimelineComponent,
   TimelineItem,
-  CarouselComponent
+  CarouselComponent,
+  BannerComponent
 } from 'veera-ng-ui-kit';
 import { NgIf, NgFor, NgTemplateOutlet, CurrencyPipe } from '@angular/common';
 import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialog-component';
@@ -83,7 +84,8 @@ import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialo
     TimelineComponent,
     NgTemplateOutlet,
     CarouselComponent,
-    CurrencyPipe
+    CurrencyPipe,
+    BannerComponent
     
   ],
   templateUrl: './app.html',
@@ -335,5 +337,10 @@ products = [
   { name: 'USB-C Hub', price: 39, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
   { name: 'Webcam 4K', price: 89, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxrJ9a_0-bYvmsYk47I-eTWxJ0B4hrPWY7feGeT2sGw&s=10' },
 ];
+trialBannerVisible = false;
+
+onUpgradeClick() {
+ this.toast.show("upgraded")
+}
 
 }

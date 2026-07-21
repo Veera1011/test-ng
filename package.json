@@ -20,7 +20,7 @@
     "@angular/router": "^22.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "veera-ng-ui-kit": "^1.0.25"
+    "veera-ng-ui-kit": "^1.0.27"
   },
   "devDependencies": {
     "@angular/build": "^22.0.4",

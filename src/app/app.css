@@ -18,6 +18,10 @@
   width: 100%;
 }
 
+.app-topbar.with-banner {
+  top: 48px;   /* approximate banner height — adjust to match actual rendered height */
+}
+
 .shell {
   display: flex;
   flex: 1;
@@ -27,6 +31,10 @@
   font-family: var(--font-family-body);
   color: var(--color-black);
   margin-top: 64px;   /* pushes content below the now-fixed topbar */
+}
+
+.shell.with-banner {
+  margin-top: 112px;   /* 64px topbar + 48px banner */
 }
 
 .shell-nav {
@@ -371,4 +379,33 @@
 }
 .expansion-accordion-stack{
   gap: 10px;
+}
+
+/* Make every carousel slide stretch to the same height as its tallest sibling */
+::ng-deep .ui-carousel-slide {
+  display: flex;
+}
+
+.carousel-card {
+  display: flex;
+  width: 100%;
+}
+
+.carousel-card ::ng-deep .ui-card,
+.carousel-card ::ng-deep .ui-card-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-card-img {
+  width: 100%;
+  height: 140px;          /* fixed height regardless of source image dimensions */
+  object-fit: cover;      /* crops rather than stretching/squashing mismatched aspect ratios */
+  border-radius: 8px;
+}
+
+.carousel-card p {
+  margin-top: auto;       /* pushes price to the bottom consistently, even if title wraps to 2 lines */
+  margin-bottom: 0;
 }

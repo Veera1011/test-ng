@@ -1,8 +1,11 @@
+<ui-banner variant="info" actionLabel="Upgrade now" (actionClick)="onUpgradeClick()" [(visible)]="trialBannerVisible">
+  Your trial ends in 3 days. Upgrade to keep access to all features.
+</ui-banner>
 <div class="app-shell">
 
   <!-- TOPBAR: spans full width, sits above everything -->
-  <ui-topbar class="app-topbar" [navItems]="topbarNav" [activeId]="activeTab" (activeIdChange)="activeTab = $event"
-    [hasSearch]="true">
+  <ui-topbar class="app-topbar" [class.with-banner]="trialBannerVisible" [navItems]="topbarNav" [activeId]="activeTab"
+    (activeIdChange)="activeTab = $event" [hasSearch]="true">
     <div brand>
       <!-- <span style="display:flex;align-items:center;gap:8px;">
         <span style="width:24px;height:24px;background:var(--color-primary-500);border-radius:6px;"></span>
@@ -21,7 +24,7 @@
   </ui-topbar>
 
   <!-- SIDENAV + MAIN: horizontal row below the topbar -->
-  <div class="shell">
+  <div class="shell" [class.with-banner]="trialBannerVisible">
 
     <!-- SIDENAV SYSTEM -->
     <ui-sidenav [groups]="sidenavGroups" [activeId]="activeNavId" (activeIdChange)="onNavChange($event)"
@@ -60,15 +63,19 @@
 
           <!-- SUBTAB LAYER: OVERVIEW -->
           <div class="tab-subview-stack" *ngIf="activeTab === 'overview'">
-            <ui-carousel [items]="products" [itemsPerView]="3" [loop]="true" [autoplay]="true"
+            <ui-card variant="bordered">
+              <ui-carousel [items]="products" [itemsPerView]="3" [loop]="true" [autoplay]="true"
                 [autoplayInterval]="2000">
                 <ng-template let-product>
-                  <ui-card [title]="product.name" variant="bordered">
-                    <img [src]="product.image" style="width:100%; border-radius:8px;" />
-                    <p>{{ product.price | currency }}</p>
-                  </ui-card>
+                  <div class="carousel-card">
+                    <ui-card [title]="product.name" variant="bordered">
+                      <img [src]="product.image" class="carousel-card-img" />
+                      <p>{{ product.price | currency }}</p>
+                    </ui-card>
+                  </div>
                 </ng-template>
               </ui-carousel>
+            </ui-card>
             <div class="flip">
               <div style="width:300px;height:300px;">
                 <ui-flip-card trigger="hover" direction="vertical">
