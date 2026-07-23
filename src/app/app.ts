@@ -1,5 +1,5 @@
 import { Component, HostListener, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import {
   AlertComponent,
   AvatarComponent,
@@ -40,7 +40,8 @@ import {
   TimelineComponent,
   TimelineItem,
   CarouselComponent,
-  BannerComponent
+  BannerComponent,
+  MobilePreviewComponent
 } from 'veera-ng-ui-kit';
 import { NgIf, NgFor, NgTemplateOutlet, CurrencyPipe } from '@angular/common';
 import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialog-component';
@@ -85,8 +86,8 @@ import { ConfirmDialogComponent } from './confirm-dialog-component/confirm-dialo
     NgTemplateOutlet,
     CarouselComponent,
     CurrencyPipe,
-    BannerComponent
-    
+    BannerComponent,
+   MobilePreviewComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
@@ -100,6 +101,8 @@ export class App {
   activeTab = 'overview';
   drawerOpen = false;
   modalOpen = false;
+  url:any;
+  isMobilePreviewOpen = false;
 
   // Configuration models
   email = 'admin@acme.corp';
@@ -182,7 +185,7 @@ export class App {
     }
   ];
 
-  constructor(private toast: ToastService, private dialog: DialogService) { }
+  constructor(private toast: ToastService, private dialog: DialogService, private router:Router) { }
 
   @HostListener('document:keydown.escape')
   onEscape() {
@@ -343,4 +346,14 @@ onUpgradeClick() {
  this.toast.show("upgraded")
 }
 
+showBanner(){
+  this.trialBannerVisible= !this.trialBannerVisible;
+}
+previewOpen = false;
+
+openMobilePreview() {
+  this.url=this.router.url
+  this.previewOpen = true;
+  console.log('previewOpen is now:', this.previewOpen);
+}
 }

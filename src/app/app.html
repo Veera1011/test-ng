@@ -1,11 +1,8 @@
-<ui-banner variant="info" actionLabel="Upgrade now" (actionClick)="onUpgradeClick()" [(visible)]="trialBannerVisible">
-  Your trial ends in 3 days. Upgrade to keep access to all features.
-</ui-banner>
 <div class="app-shell">
 
-  <!-- TOPBAR: spans full width, sits above everything -->
-  <ui-topbar class="app-topbar" [class.with-banner]="trialBannerVisible" [navItems]="topbarNav" [activeId]="activeTab"
-    (activeIdChange)="activeTab = $event" [hasSearch]="true">
+  <!-- TOPBAR: spans full width, sits above everything [class.with-banner]="trialBannerVisible" -->
+  <ui-topbar class="app-topbar" [navItems]="topbarNav" [activeId]="activeTab" (activeIdChange)="activeTab = $event"
+    [hasSearch]="true">
     <div brand>
       <!-- <span style="display:flex;align-items:center;gap:8px;">
         <span style="width:24px;height:24px;background:var(--color-primary-500);border-radius:6px;"></span>
@@ -23,8 +20,8 @@
     </div>
   </ui-topbar>
 
-  <!-- SIDENAV + MAIN: horizontal row below the topbar -->
-  <div class="shell" [class.with-banner]="trialBannerVisible">
+  <!-- SIDENAV + MAIN: horizontal row below the topbar [class.with-banner]="trialBannerVisible"-->
+  <div class="shell">
 
     <!-- SIDENAV SYSTEM -->
     <ui-sidenav [groups]="sidenavGroups" [activeId]="activeNavId" (activeIdChange)="onNavChange($event)"
@@ -33,9 +30,14 @@
 
     <!-- MAIN VIEWPORT CONTAINER -->
     <div class="shell-main">
-
+      <!-- 'info' | 'success' | 'warning' | 'danger' | 'neutral'; -->
+      <ui-banner variant="neutral" actionLabel="Upgrade now" (actionClick)="onUpgradeClick()"
+        [(visible)]="trialBannerVisible">
+        Your trial ends in 3 days. Upgrade to keep access to all features.
+      </ui-banner>
       <!-- ADMINISTRATIVE GLOBAL PAGE HEADER -->
       <header class="page-header">
+
         <div>
           <span class="eyebrow">Project Workspace</span>
           <h1>
@@ -45,8 +47,10 @@
           </h1>
         </div>
         <div class="page-header-actions">
-          <button class="tooltip-trigger" [uiTooltip]="'Runs the global export suite engine'">Export ⤓</button>
+          <ui-button variant="primary" [uiTooltip]="'Runs the global export suite engine'"
+            (click)="showBanner()">Upgrade</ui-button>
           <ui-button variant="secondary" (click)="openDrawer()">Open filters</ui-button>
+           <ui-button variant="secondary" (click)="isMobilePreviewOpen = true">Open</ui-button>
         </div>
       </header>
 
@@ -77,7 +81,7 @@
               </ui-carousel>
             </ui-card>
             <div class="flip">
-              <div style="width:300px;height:300px;">
+              <div style="width:min(300px, 90vw); height:min(300px, 90vw);">
                 <ui-flip-card trigger="hover" direction="vertical">
                   <div front class="card-face-content">
                     <img
@@ -377,3 +381,8 @@
 
 <!-- NOTIFICATION STACK CONTEXT -->
 <ui-toast-container></ui-toast-container>
+<ui-mobile-preview
+  *ngIf="isMobilePreviewOpen"
+  (closed)="isMobilePreviewOpen = false"
+>
+</ui-mobile-preview>

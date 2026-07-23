@@ -409,3 +409,30 @@
   margin-top: auto;       /* pushes price to the bottom consistently, even if title wraps to 2 lines */
   margin-bottom: 0;
 }
+@media (max-width: 768px) {
+  .shell {
+    flex-direction: column;
+  }
+  .shell-nav {
+    position: static;
+    height: auto;
+    width: 100%;
+    max-height: 240px; /* or collapse behind a toggle if ui-sidenav supports it */
+  }
+}
+
+@media (max-width: 640px) {
+  .shell { margin-top: 96px; }       /* adjust to actual mobile topbar height */
+  .shell.with-banner { margin-top: 160px; }
+  .app-topbar.with-banner { top: 64px; }
+}
+
+.page-header {
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+@media (max-width: 640px) {
+  .content { padding: var(--space-4) var(--space-4); }
+  .page-tabs { margin-left: var(--space-4); margin-right: var(--space-4); }
+  .page-header { padding: var(--space-4) var(--space-4) 0; }
+}
