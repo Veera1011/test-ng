@@ -356,4 +356,44 @@ openMobilePreview() {
   this.previewOpen = true;
   console.log('previewOpen is now:', this.previewOpen);
 }
+//  devices:any = [
+//    { id: 'ipadmini', name: 'iPad Mini', width: 768, height: 1024 },
+//   { id: 'ipadair', name: 'iPad Air', width: 820, height: 1180 },
+//   { id: 'ipadpro11', name: 'iPad Pro 11"', width: 834, height: 1194 },
+//   { id: 'ipadpro13', name: 'iPad Pro 13"', width: 1032, height: 1376 },
+// ]
+ devices :any= [
+  { id: 'iphone16promax', name: 'iPhone 16 Pro Max', width: 440, height: 956 },
+  { id: 'iphone16pro', name: 'iPhone 16 Pro', width: 402, height: 874 },
+  { id: 'iphone15', name: 'iPhone 15', width: 393, height: 852 },
+  { id: 'iphone14pro', name: 'iPhone 14 Pro', width: 393, height: 852 },
+  { id: 'iphone13', name: 'iPhone 13', width: 390, height: 844 },
+  // { id: 'iphone12mini', name: 'iPhone 12 Mini', width: 360, height: 780 },
+  // { id: 'iphone11', name: 'iPhone 11', width: 414, height: 896 },
+  // { id: 'iphonese', name: 'iPhone SE (3rd Gen)', width: 375, height: 667 },
+
+  // { id: 'pixel9pro', name: 'Pixel 9 Pro', width: 412, height: 915 },
+  // { id: 'pixel8', name: 'Pixel 8', width: 412, height: 915 },
+  // { id: 'pixel7', name: 'Pixel 7', width: 412, height: 915 },
+  // { id: 'pixel6a', name: 'Pixel 6a', width: 411, height: 731 },
+
+  // { id: 'galaxys25ultra', name: 'Galaxy S25 Ultra', width: 412, height: 915 },
+  // { id: 'galaxys24', name: 'Galaxy S24', width: 384, height: 854 },
+  // { id: 'galaxys23', name: 'Galaxy S23', width: 360, height: 800 },
+  // { id: 'galaxys23ultra', name: 'Galaxy S23 Ultra', width: 412, height: 915 },
+  // { id: 'galaxya54', name: 'Galaxy A54', width: 384, height: 854 },
+
+  // { id: 'oneplus12', name: 'OnePlus 12', width: 412, height: 915 },
+  // { id: 'oneplus11', name: 'OnePlus 11', width: 412, height: 919 },
+  // { id: 'xiaomi14', name: 'Xiaomi 14', width: 393, height: 852 },
+  // { id: 'redminote13', name: 'Redmi Note 13', width: 393, height: 873 },
+  // { id: 'nothingphone2', name: 'Nothing Phone (2)', width: 412, height: 915 },
+
+  // { id: 'ipadmini', name: 'iPad Mini', width: 768, height: 1024 },
+  // { id: 'ipadair', name: 'iPad Air', width: 820, height: 1180 },
+  // { id: 'ipadpro11', name: 'iPad Pro 11"', width: 834, height: 1194 },
+  // { id: 'ipadpro13', name: 'iPad Pro 13"', width: 1032, height: 1376 },
+
+  // { id: 'custom', name: 'Custom', width: 375, height: 667 },
+];
 }

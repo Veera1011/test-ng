@@ -383,6 +383,7 @@
 <ui-toast-container></ui-toast-container>
 <ui-mobile-preview
   *ngIf="isMobilePreviewOpen"
+  [devices]="devices"
   (closed)="isMobilePreviewOpen = false"
 >
 </ui-mobile-preview>
